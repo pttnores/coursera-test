@@ -1,5 +1,5 @@
 # [Code](https://github.com/pttnores/coursera-test/tree/master/module1-solution)
-# [App Url](https://pttnores.github.io/coursera-test/module1-solution/app.html)
+# [App Url](https://pttnores.github.io/coursera-test/module1-solution/public/index.html)
 
 Module 1 Coding Assignment
 =======
