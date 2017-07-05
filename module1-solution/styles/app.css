@@ -1,0 +1,21 @@
+.has-error {
+    border: solid red 20px;
+}
+
+.has-success {
+    border: solid green 20px;
+}
+
+input.ng-valid.ng-touched {
+    border: solid green 2px;
+}
+
+input.ng-invalid.ng-touched{
+    border: solid red 2px;
+}
+
+
+.message {
+    font-size: 1.3em;
+    font-weight: bold;
+}
