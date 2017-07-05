@@ -3,6 +3,6 @@
 Single Page Web Applications with AngularJS
 
 First Assignment 
-* [Instructions](//module1-solution/README.md)
-* [Code](https://github.com/pttnores/coursera-test/module1-solution)
-* [App](https://pttnores.github.io/coursera-test/module1-solution/index.html)
+* [Instructions](https://pttnores.github.io/coursera-test/module1-solution/)
+* [Code](https://github.com/pttnores/coursera-test/tree/master/module1-solution)
+* [App Url](https://pttnores.github.io/coursera-test/module1-solution/app.html)
