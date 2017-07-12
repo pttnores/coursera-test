@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Narrow Down Your Menu Choice</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-  </head>
-<body>
+<head>
+  <meta charset="utf-8">
+  <title>Narrow Down Your Menu Choice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body ng-app="NarrowItDownApp">
 <nav class="navbar navbar-default navbar-static-top">
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
@@ -24,33 +25,50 @@
     </div>
   </nav>
 </nav>
-   <div class="container">
+<div class="container">
 
-     <div class="page-header"><h1>Narrow Down Your Chinese Menu Choice</h1></div>
-     <nav class="navbar navbar-default">
+  <div class="page-header"><h1>Narrow Down Your Chinese Menu Choice</h1></div>
+  <nav class="navbar navbar-default">
 
-       <ul class="nav navbar-nav">
-         <li class="active">
-           <a target="_blank" href="https://pttnores.github.io/coursera-test/module3-solution/public/index.html">App
-             Url
-           </a>
-         </li>
-         <li><a target="_blank" href="https://pttnores.github.io/coursera-test/module3-solution/">Assignment</a></li>
-         <li><a target="_blank" href="https://github.com/pttnores/coursera-test/tree/master/module3-solution">Code</a>
-         </li>
-       </ul>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a target="_blank" href="https://pttnores.github.io/coursera-test/module3-solution/public/index.html">App
+          Url
+        </a>
+      </li>
+      <li><a target="_blank" href="https://pttnores.github.io/coursera-test/module3-solution/">Assignment</a></li>
+      <li><a target="_blank" href="https://github.com/pttnores/coursera-test/tree/master/module3-solution">Code</a>
+      </li>
+    </ul>
 
-     </nav>
-    <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control">
+  </nav>
+  <div ng-controller='NarrowItDownController as menu'>
+    <h3>List of Menu Categories</h3>
+    <div>
+      <div class="form-group">
+        <input type="text" placeholder="search term" class="form-control" ng-model="searchTerm">
+      </div>
+      <div class="form-group">
+        <button ng-click="menu.narrowSearch(searchTerm);" class="btn btn-primary">Narrow It Down For Me!</button>
+      </div>
     </div>
-    <div class="form-group narrow-button">
-      <button class="btn btn-primary">Narrow It Down For Me!</button>
-    </div>
 
-    <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
+    <found-items title="{{menu.title}}" items="menu.items" on-remove="menu.onRemove(index)">
+      <div class="error">
+        <div ng-if="!searchTerm">
+          Please provide your search term
+        </div>
+        <div class="error" ng-if="searchTerm && menu.items.length === 0">
+          No items found, please try with another search term
+        </div>
+      </div>
+
+    </found-items>
+
   </div>
 
+</div>
+<script src="js/angular.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
