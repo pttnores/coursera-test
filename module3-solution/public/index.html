@@ -54,12 +54,17 @@
     </div>
 
     <found-items title="{{menu.title}}" items="menu.items" on-remove="menu.onRemove(index)">
-      <div class="error">
-        <div ng-if="!searchTerm">
+      <div>
+        <div class="warning" ng-if="searchTerm && menu.lastSearched !== searchTerm">
+          Click on "Narrow It Down For Me!" to update the search results
+        </div>
+
+        <div class="warning" ng-if="!searchTerm">
           Please provide your search term
         </div>
-        <div class="error" ng-if="searchTerm && menu.items.length === 0">
-          No items found, please try with another search term
+
+        <div class="info" ng-if="searchTerm && menu.lastSearched === searchTerm  && menu.items.length === 0">
+          No items found for "{{searchTerm}}", please try with another search term
         </div>
       </div>
 
@@ -68,7 +73,7 @@
   </div>
 
 </div>
-<script src="js/angular.min.js"></script>
-<script src="js/app.js"></script>
+<script src="lib/angular.min.js"></script>
+<script src="src/app.js"></script>
 </body>
 </html>

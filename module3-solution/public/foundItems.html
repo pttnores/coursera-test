@@ -1,8 +1,21 @@
-<h3>{{ list.myTitle }}</h3>
 <div class="error" ng-transclude></div>
+<h3>{{ list.myTitle }}</h3>
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="item in list.items">
-    {{ item.name }}
-    <button style="float: right" ng-click="list.onRemove({index: $index});" class="btn btn-primary">Remove</button>
+  <li class="list-group-item " ng-repeat="item in list.items">
+    <div class="row">
+
+      <div class="text-muted col-xs-8 col-md-4" >
+        {{ item.short_name }} - <span class="text-primary">{{ item.name }}</span>
+        <br>
+        {{ item.description }}
+      </div>
+
+      <button class="col-xs-2 col-md-4 btn btn-danger "
+              style="float: right; margin-right: 2em;vertical-align:middle;"
+              ng-click="list.onRemove({index: $index});">
+        Remove
+      </button>
+    </div>
+
   </li>
 </ul>

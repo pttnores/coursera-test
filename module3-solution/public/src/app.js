@@ -43,37 +43,47 @@
   NarrowItDownController.$inject = ['$scope', 'MenuSearchService'];
   function NarrowItDownController($scope, MenuSearchService) {
     var menu = this;
-
+    var origTitle = "Menu List ";
     menu.searchTerm = '';
     menu.items = [];
+    menu.lastSearched = '';
 
-    var origTitle = "Menu List ";
-    menu.title = origTitle + " (" + menu.items.length + " items )";
+    menu.title = updateMenuItemsTitle();
 
     menu.narrowSearch = function (searchTerm) {
-      MenuSearchService.getMatchedMenuItems()
-        .then(function (response) {
-          var data = response.data;
-          var items = data.menu_items;
+      menu.lastSearched = searchTerm;
+      if (typeof searchTerm === 'string' && searchTerm.length > 0) {
+        MenuSearchService.getMatchedMenuItems()
+          .then(function (response) {
+            var data = response.data;
+            var items = data.menu_items;
 
-          return MenuSearchService.narrowSearch(items, searchTerm);
+            return MenuSearchService.narrowSearch(items, searchTerm);
 
-        })
-        .then(function (itemsFound) {
+          })
+          .then(function (itemsFound) {
+              menu.items = itemsFound;
+              updateMenuItemsTitle();
+            }
+          )
+          .catch(function (error) {
+            console.log("Something went terribly wrong.", error);
+          });
+      } else {
+        menu.items = [];
+        updateMenuItemsTitle();
+      }
 
-            menu.items = itemsFound;
-            menu.title = origTitle + " (" + menu.items.length + " items )";
-          }
-        )
-        .catch(function (error) {
-          console.log("Something went terribly wrong.", error);
-        });
     };
 
     menu.onRemove = function (index) {
       menu.items.splice(index, 1);
-      menu.title = origTitle + " (" + menu.items.length + " items )";
+      updateMenuItemsTitle();
     };
+
+    function updateMenuItemsTitle () {
+      menu.title = origTitle + " (" + menu.items.length + " items )";
+    }
   }
 
 
