@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html ng-app='LunchCheck'>
+<html ng-app="MenuApp">
 <head>
   <meta charset="utf-8">
-  <title>Lunch Checker</title>
+  <title>Menu App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
   <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -27,7 +28,9 @@
 <div class="container">
   <div class="col-sm-8 col-sm-offset-2 well">
 
-    <div class="page-header"><h1 class="text-center">Lunch Checker</h1></div>
+    <div class="page-header">
+      <h1 class="text-center">Menu App</h1>
+    </div>
     <nav class="navbar navbar-default">
 
       <ul class="nav navbar-nav">
@@ -42,9 +45,28 @@
       </ul>
 
     </nav>
-
+    <ui-view></ui-view>
   </div>
 </div>
-</div>
+
+<!-- Libraries -->
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-ui-router.min.js"></script>
+
+<!-- Modules -->
+<script src="src/menuapp/menuapp.module.js"></script>
+<script src="src/menuapp/menuapp.module.js"></script>
+<script src="src/menuapp/data.module.js"></script>
+
+<!-- Routes -->
+<script src="src/routes.js"></script>
+
+<!-- 'menuapp' module artifacts -->
+<script src="src/menuapp/categories.component.js"></script>
+<script src="src/menuapp/items.component.js"></script>
+<script src="src/menuapp/main-menuapp.controller.js"></script>
+<script src="src/menuapp/menudata.service.js"></script>
+<script src="src/menuapp/item-detail.controller.js"></script>
+
 </body>
 </html>
