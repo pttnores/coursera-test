@@ -1,3 +1,4 @@
 <div class="list-group-item" ng-repeat="item in $ctrl.items">
-  {{ item.name }} ({{ item.short_name }})
+  <div class="list-group-item-heading">{{ item.name }} ({{ item.short_name }})</div>
+  <p class="list-group-item-text text-muted">{{item.description}}</p>
 </div>
