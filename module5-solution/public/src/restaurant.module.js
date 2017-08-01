@@ -4,7 +4,7 @@
 /**
  * Restaurant module that includes the public module as a dependency
  */
-angular.module('restaurant', ['public', 'ngMock'])
+angular.module('restaurant', ['public'])
 .config(config);
 
 config.$inject = ['$urlRouterProvider'];
