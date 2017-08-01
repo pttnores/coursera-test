@@ -28,6 +28,11 @@ function MenuService($http, ApiPath, $q) {
   };
 
   service.getMenuItem = function(shortName) {
+
+    if (!shortName) {
+      return $q.resolve();
+    }
+
     return $http.get(ApiPath + '/menu_items/' + shortName + '.json')
       .then(function(response) {
         if (response.data.short_name) {
@@ -35,13 +40,8 @@ function MenuService($http, ApiPath, $q) {
         } else {
           return false;
         }
-
       });
   };
-
-
 }
-
-
 
 })();
