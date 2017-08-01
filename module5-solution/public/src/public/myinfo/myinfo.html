@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="menu-item-tile col-md-6 .col-md-offset-3">
+  <h2>My Information</h2>
+    <div ng-if="myInfoCtrl.user">
+      <p><span class="text-muted">First name:</span> {{myInfoCtrl.user.name}}</p>
+      <p><span class="text-muted">Last name:</span> {{myInfoCtrl.user.lastname}}</p>
+      <p><span class="text-muted">Email address:</span> {{myInfoCtrl.user.email}}</p>
+      <p><span class="text-muted">Phone number:</span> {{myInfoCtrl.user.phone}}</p>
+    </div>
+
+    <h3 ng-if="myInfoCtrl.menuItem">Favourite Dish</h3>
+    <menu-item ng-if="myInfoCtrl.menuItem" menu-item="myInfoCtrl.menuItem">
+    </menu-item>
+
+    <button ng-if="!myInfoCtrl.user" class="alert alert-warning fade in" ui-sref="public.signup">
+      Not Signed Up Yet. Sign up Now!
+    </button>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+  <h2> Newsletter Sign-Up</h2>
+  <form name="signUpForm" novalidate>
+    <fieldset>
+      <div class="form-group" ng-class="{'has-error' : signUpForm.name.$invalid}">
+        <label class="control-label">Name</label>
+        <input ng-model="signUpCtrl.user.name" name="name" class="form-control" placeholder="Name" required>
+        <div class="control-label" ng-if="signUpForm.name.$invalid && signUpForm.name.$touched">
+          First name is a required field
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : signUpForm.lastname.$invalid}">
+        <label class="control-label">Last name</label>
+        <input ng-model="signUpCtrl.user.lastname" name="lastname" class="form-control"
+               placeholder="Last name" required>
+        <div class="control-label" ng-if="signUpForm.lastname.$invalid && signUpForm.lastname.$touched">
+          Last name is a required field
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : signUpForm.email.$invalid}">
+        <label class="control-label">Email</label>
+        <input type="email" ng-model="signUpCtrl.user.email" name="email" class="form-control"
+               placeholder="E-mail" required>
+        <div class="control-label" ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+          Email is a required field
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : signUpForm.phone.$invalid}">
+        <label class="control-label">Phone</label>
+        <input type="number" ng-model="signUpCtrl.user.phone" name="phone" class="form-control" placeholder="Phone ##########" required>
+        <div class="control-label" ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+          Phone must be in the format ##########
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : signUpForm.favouriteDish.$invalid}">
+        <label class="control-label">Favourite Dish</label>
+        <input type="text"
+               ng-model="signUpCtrl.user.favouriteDish"
+               name="favouriteDish"
+               class="form-control"
+               placeholder="Favourite Dish"
+               ng-trim="true"
+               ng-model-options="{ updateOn: 'default blur'}"
+               check-availability
+        >
+        <div class="control-label" ng-if="signUpForm.favouriteDish.$invalid && signUpForm.favouriteDish.$touched">
+          No such menu number exists
+        </div>
+        <div class="control-label" ng-if="signUpForm.favouriteDish">
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-default" ng-click="signUpCtrl.signup()" ng-disabled="signUpForm.$invalid">Save</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <div ng-show="signUpForm.$submitted && signUpForm.$valid">
+    <div class="alert alert-success fade in">Your information has been saved</div>
+  </div>
+</div>
