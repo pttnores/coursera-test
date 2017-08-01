@@ -112,7 +112,6 @@ describe('user signUp form', function() {
   });
 
   it('ensure valid favouriteDish pass validation', function() {
-    $httpBackend.expectGET(ApiPath + '/menu_items/.json').respond([]);
     compileAndDigest('<input ng-model="signUpCtrl.user.favouriteDish" name="favouriteDish" class="form-control" placeholder="Favourite Dish" ng-trim="true" ng-model-options="{ updateOn: \'default blur\'}" check-availability>', scope);
     $httpBackend.expectGET(ApiPath + '/menu_items/L1.json').respond([]);
     scope.signUpForm.favouriteDish.$setViewValue('L1');
@@ -123,7 +122,6 @@ describe('user signUp form', function() {
   });
 
   it('ensure invalid favouriteDish are caught', function() {
-    $httpBackend.expectGET(ApiPath + '/menu_items/.json').respond([]);
     compileAndDigest('<input ng-model="signUpCtrl.user.favouriteDish" name="favouriteDish" class="form-control" placeholder="Favourite Dish" ng-trim="true" ng-model-options="{ updateOn: \'default blur\'}" check-availability>', scope);
     $httpBackend.expectGET(ApiPath + '/menu_items/L1333.json').respond(500);
     scope.signUpForm.favouriteDish.$setViewValue('L1333');
